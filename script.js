@@ -26,5 +26,80 @@ const chat = ai.chats.create({
         - Answer everything to the point
         - Follow the methodology of first principles`
     }
-
 });
+
+//  Add Message to the chat window
+function addMessageToChat(text, sender) {
+
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message-${sender}`;
+
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'message-content';
+
+    contentDiv.innerHTML = formatMessage(text);
+
+    messageDiv.appendChild(contentDiv);
+    chatMessages.appendChild(messageDiv);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+}
+
+// Format message with code highlighting
+function formatMessage (text) {
+    text = text.replace(/```([\s\S]*?)```/g, '<pre><code>$1</code></pre>');
+    text = text.replace(/`([^`]+)`/g, '<code>$1</code>');
+    text = text.replace(/\n/g, '<br>');
+    return text;
+}
+
+// Show typing indicator
+function showTyping() {
+
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'message assistant';
+    typingDiv.id = 'typingIndicator';
+
+    typingDiv.innerHTML = `
+        <div class="typing-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    `;
+
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+
+}
+
+// Remove typing indicator 
+function removeTyping() {
+    const typingIndicator = document.getElementById('typingIndicator');
+    if (typingIndicator) {
+        typingIndicator.remove();
+    }
+}
+
+// Handle send message 
+async function handleSend() {
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
